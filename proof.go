@@ -57,13 +57,15 @@ func (pin proofInnerNode) Hash(childHash []byte) []byte {
 	hasher := tmhash.New()
 	buf := new(bytes.Buffer)
 
-	err := amino.EncodeInt8(buf, pin.Height)
-	if err == nil {
-		err = amino.EncodeVarint(buf, pin.Size)
-	}
-	if err == nil {
-		err = amino.EncodeVarint(buf, pin.Version)
-	}
+	// err := amino.EncodeInt8(buf, pin.Height)
+	// if err == nil {
+	// 	err = amino.EncodeVarint(buf, pin.Size)
+	// }
+	// if err == nil {
+	// 	err = amino.EncodeVarint(buf, pin.Version)
+	// }
+
+	var err error
 
 	if len(pin.Left) == 0 {
 		if err == nil {
@@ -116,13 +118,16 @@ func (pln proofLeafNode) Hash() []byte {
 	hasher := tmhash.New()
 	buf := new(bytes.Buffer)
 
-	err := amino.EncodeInt8(buf, 0)
-	if err == nil {
-		err = amino.EncodeVarint(buf, 1)
-	}
-	if err == nil {
-		err = amino.EncodeVarint(buf, pln.Version)
-	}
+	// err := amino.EncodeInt8(buf, 0)
+	// if err == nil {
+	// 	err = amino.EncodeVarint(buf, 1)
+	// }
+	// if err == nil {
+	// 	err = amino.EncodeVarint(buf, pln.Version)
+	// }
+
+	var err error
+
 	if err == nil {
 		err = amino.EncodeByteSlice(buf, pln.Key)
 	}

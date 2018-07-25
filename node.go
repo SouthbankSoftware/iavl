@@ -232,18 +232,20 @@ func (node *Node) hashWithCount() ([]byte, int64) {
 // Writes the node's hash to the given io.Writer. This function expects
 // child hashes to be already set.
 func (node *Node) writeHashBytes(w io.Writer) cmn.Error {
-	err := amino.EncodeInt8(w, node.height)
-	if err != nil {
-		return cmn.ErrorWrap(err, "writing height")
-	}
-	err = amino.EncodeVarint(w, node.size)
-	if err != nil {
-		return cmn.ErrorWrap(err, "writing size")
-	}
-	err = amino.EncodeVarint(w, node.version)
-	if err != nil {
-		return cmn.ErrorWrap(err, "writing version")
-	}
+	// err := amino.EncodeInt8(w, node.height)
+	// if err != nil {
+	// 	return cmn.ErrorWrap(err, "writing height")
+	// }
+	// err = amino.EncodeVarint(w, node.size)
+	// if err != nil {
+	// 	return cmn.ErrorWrap(err, "writing size")
+	// }
+	// err = amino.EncodeVarint(w, node.version)
+	// if err != nil {
+	// 	return cmn.ErrorWrap(err, "writing version")
+	// }
+
+	var err error
 
 	// Key is not written for inner nodes, unlike writeBytes.
 
